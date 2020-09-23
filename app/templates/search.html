@@ -1,0 +1,38 @@
+<body>
+    <center>
+        <br>
+        <h1>검색 결과</h1>
+    </center>
+    <div>
+        <div style="float: right;">
+            <form action="{%url 'index'%}">
+                <button>홈으로 돌아가기</button>
+            </form>
+        </div>
+        <div style="margin-left: 2em;">
+            {%for v in vocas%}
+            <p style="margin-right: 5em;">{{v.grade}}</p>
+            <p style="font-size: 1.8rem;">{{v.word}} {{v.mean}}</p>
+            <hr>
+            {%endfor%}
+        </div>
+    </div>
+    <br>
+    <!-- <center>
+        <div>
+            {% if vocas.has_previous %}
+            <a href="?page=1">맨앞으로</a>
+            <a href="?page={{vocas.previous_page_number}}">이전으로</a>
+            {% endif %}
+            <span>{{vocas.number}}</span>
+            <span>/</span>
+            <span>{{vocas.paginator.num_pages}}</span>
+            {%if vocas.has_next%}
+            <a href="?page={{vocas.next_page_number}}">다음으로</a>
+            <a href="?page={{vocas.paginator.num_pages}}">맨뒤로</a>
+            {%endif%}
+        </div>
+    </center>
+    <br> -->
+
+</body>
