@@ -29,5 +29,9 @@ urlpatterns = [
     path('voca_elementary/', app.views.voca_elementary, name='voca_elementary'),
     path('voca_high/', app.views.voca_high, name='voca_high'),
     path('voca_ma/', app.views.voca_ma, name='voca_ma'),
-
+    path('voca_test/', app.views.voca_test, name='voca_test'),
+    path('test_result/', app.views.test_result, name='test_result'),
+    path('listen/', app.views.listen, name='listen'),
+    path('write/', app.views.write, name='write'),
+    path('pronounce/', app.views.pronounce, name='pronounce'),
 ]

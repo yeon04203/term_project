@@ -4,7 +4,12 @@ from .models import Blog
 from django.core.paginator import Paginator
 
 def index(request):
-    return render(request,'index.html')
+    vocas=Voca.objects.order_by('?')[0]
+
+    context={
+        "vocas":vocas
+    }
+    return render(request,'index.html',context)
 
 def voca(request):
     vocas=Voca.objects.all()
@@ -15,6 +20,7 @@ def voca(request):
     context={
         "vocas":vocas
     }
+    
     return render(request,'voca.html',context) 
 
 def search(request):
@@ -72,3 +78,41 @@ def voca_ma(request):
         "vocas":vocas
     }
     return render(request,'voca_ma.html',context)
+
+def voca_test(request):
+    vocas=Voca.objects.order_by('?')[0]
+    context={
+        "vocas":vocas
+    }
+
+    return render(request,'voca_test.html',context)
+
+def test_result(request):
+    voca_test()
+    test_word=request.GET['test_word']
+    flag="정답"
+    flag2="오답"
+    if vocas.mean==test_word:
+        context={
+            "flag":flag
+                }
+        return render(request,'test_result.html',context)
+    else:
+        context={
+            "flag":flag2
+            }
+        return render(request,'test_result.html',context)
+
+    return render(request,'test_result.html')
+
+def listen(request):
+
+    return render(request,'listen.html')
+
+def write(request):
+
+    return render(request,'write.html')
+
+def pronounce(request):
+
+    return render(request,'pronounce.html')
