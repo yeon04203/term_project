@@ -1,13 +1,13 @@
 <center style="font-size: 1rem;">
-    <h1>메인페이지예시</h1>
+    <h1>메인페이지</h1>
 </center>
 <div style="float: right;">
     {%if user.is_authenticated%}
-    <div style="font-size: 1.2rem;">
+    <div style="font-size: 1.1rem;">
         {{user.username}}님ㅤ
-        <form action="{%url 'logout'%}" method="POST" style="float: right; font-size: 1.2rem;">
+        <form action="{%url 'logout'%}" method="POST" style="float: right; font-size: 1.1rem;">
             {%csrf_token%}
-            <input type="submit" value="로그아웃" style="font-size: 1.2rem;">
+            <input type="submit" value="로그아웃" style="font-size: 1.1rem;">
         </form>
     </div>
     {%else%}
@@ -18,7 +18,7 @@
 <br>
 <br>
 <hr>
-<div>
+<div style="text-align: right;">
     <a href="{%url 'voca'%}">전체 단어 (검색기능 완)</a>
     <a href="{%url 'voca_elementary'%}">초등 단어</a>
     <a href="{%url 'voca_high'%}">중고 단어</a>
@@ -28,4 +28,10 @@
     <a href="{%url 'write'%}">손글씨 쓰기</a>
     <a href="{%url 'pronounce'%}">발음 연습</a>
 </div>
-<h3>오늘의 표현</h3> {{todays.today_word}} {{todays.today_mean}}
+<br>
+<br>
+<center>
+    <div style="border:1px solid; padding:15px; width: 60rem;">
+        <h3>오늘의 표현</h3> {{todays.today_word}} {{todays.today_mean}}
+    </div>
+</center>
