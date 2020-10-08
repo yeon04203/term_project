@@ -20,13 +20,14 @@ import accounts.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',app.views.index,name='index'),
-    path('voca/',app.views.voca,name='voca'),
-    path('signup/',accounts.views.signup,name='signup'),
-    path('login/',accounts.views.login,name='login'),
+    path('', app.views.index, name='index'),
+    path('voca/', app.views.voca, name='voca'),
+    path('signup/', accounts.views.signup, name='signup'),
+    path('login/', accounts.views.login, name='login'),
     path('logout/', accounts.views.logout, name='logout'),
     path('search/', app.views.search, name='search'),
-    path('voca_elementary/', app.views.voca_elementary, name='voca_elementary'),
+    path('voca_elementary/', app.views.voca_elementary,
+         name='voca_elementary'),
     path('voca_high/', app.views.voca_high, name='voca_high'),
     path('voca_ma/', app.views.voca_ma, name='voca_ma'),
     path('voca_test/', app.views.voca_test, name='voca_test'),
@@ -34,4 +35,5 @@ urlpatterns = [
     path('listen/', app.views.listen, name='listen'),
     path('write/', app.views.write, name='write'),
     path('pronounce/', app.views.pronounce, name='pronounce'),
+    path('voca_cate/', app.views.voca_cate, name='voca_cate'),
 ]

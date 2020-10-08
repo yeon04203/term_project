@@ -1,8 +1,9 @@
 <h1>단어 테스트</h1>
 
-{{vocas.word}}
+{{vocas_test.word}}
 
 <form action="{%url 'test_result'%}" method="get">
-    <input type="text" name="test_word">
+    <input type="hidden" value="{{vocas_test.mean}}" name="mean"></input>
+    <input type=" text" name="test_word">
     <input type="submit" value="정답제출">
 </form>

@@ -39,6 +39,38 @@ def search(request):
     return render(request, 'search.html', context)
 
 
+#단어 테스트
+def voca_test(request):
+    vocas_test = Voca.objects.order_by('?')[0]
+    context = {"vocas_test": vocas_test}
+
+    return render(request, 'voca_test.html', context)
+
+
+def test_result(request):
+    test_word = request.GET['test_word']
+    test_mean = request.GET['mean']
+    flag = "플래그"
+
+    if test_mean == test_word:
+        flag = "정답"
+        context = {"flag": flag}
+        return render(request, 'test_result.html', context)
+    else:
+        flag = "오답"
+        context = {"flag": flag}
+        return render(request, 'test_result.html', context)
+
+
+#----------------------------------
+
+
+#단어 카테고리 나누기
+def voca_cate(request):
+
+    return render(request, 'voca_cate.html')
+
+
 def voca_elementary(request):
     vocas = Voca.objects.all()
     vocas = Voca.objects.filter(grade='초등')
@@ -75,26 +107,7 @@ def voca_ma(request):
     return render(request, 'voca_ma.html', context)
 
 
-def voca_test(request):
-    vocas = Voca.objects.order_by('?')[0]
-    context = {"vocas": vocas}
-
-    return render(request, 'voca_test.html', context)
-
-
-def test_result(request):
-    voca_test()
-    test_word = request.GET['test_word']
-    flag = "정답"
-    flag2 = "오답"
-    if vocas.mean == test_word:
-        context = {"flag": flag}
-        return render(request, 'test_result.html', context)
-    else:
-        context = {"flag": flag2}
-        return render(request, 'test_result.html', context)
-
-    return render(request, 'test_result.html')
+#----------------------------------
 
 
 def listen(request):
