@@ -39,7 +39,7 @@ def search(request):
     return render(request, 'search.html', context)
 
 
-#단어 테스트
+#단어 테스트임
 def voca_test(request):
     vocas_test = Voca.objects.order_by('?')[0]
     context = {"vocas_test": vocas_test}
