@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Blog(models.Model):
@@ -11,6 +12,7 @@ class Voca(models.Model):
     word = models.CharField(max_length=300)
     mean = models.CharField(max_length=300)
     grade = models.CharField(max_length=300)
+    like = models.ManyToManyField(User, related_name='likes', blank=True)
 
 
 class Today(models.Model):

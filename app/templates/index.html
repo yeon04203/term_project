@@ -18,6 +18,7 @@
 <br>
 <br>
 <hr>
+{%if user.is_authenticated%}
 <div style="text-align: right;">
     <a href="{%url 'voca_cate'%}">단어장</a>
     <a href="{%url 'voca_test'%}">단어 테스트</a>
@@ -25,6 +26,9 @@
     <a href="{%url 'write'%}">손글씨 쓰기</a>
     <a href="{%url 'pronounce'%}">발음 연습</a>
 </div>
+{%else%}
+<div>로그인 하지 않으면 메뉴 안보임</div>
+{%endif%}
 <br>
 <br>
 <center>

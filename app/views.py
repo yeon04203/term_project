@@ -1,8 +1,14 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.http import HttpResponse, JsonResponse
 from .models import Voca
 from .models import Blog
 from .models import Today
 from django.core.paginator import Paginator
+from django.db.models import Q
+try:
+    from django.utills import simplejson as json
+except ImportError:
+    import json
 
 
 def index(request):
@@ -24,12 +30,12 @@ def voca(request):
 
 
 def search(request):
-    vocas = Voca.objects.all()
     search_word = request.GET['search']
-    if ord('가') <= ord(search_word) <= ord('힣'):  #한글이면 뜻으로 검색
-        vocas = Voca.objects.filter(mean__icontains=search_word)
-    else:  #아니면(영어면) 단어로 검색-> 보완해야
-        vocas = Voca.objects.filter(word__icontains=search_word)
+    # if ord('가') <= ord(search_word) <= ord('힣'):
+    vocas = Voca.objects.filter(
+        Q(mean__icontains=search_word) | Q(word__icontains=search_word))
+    # else:
+    #     vocas = Voca.objects.filter(word__icontains=search_word)
 
     # paginator=Paginator(vocas,5)
     # now_page=request.GET.get('page')
