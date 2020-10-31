@@ -12,6 +12,14 @@
         현재 포인트는
         {{user.profile.user_test_point}}점입니다.
     </div>
+    <div>
+        <h3>현재 포인트 순위 현황</h3>
+        {%for r in rank%}
+        {{r.nickname}}<br>
+        {%endfor%}
+    </div>
+    <br>
+    <hr>
     <div>아이디 : {{user.username}}</div>
     <div class="login_container">
         <h4>비밀번호 변경</h4>

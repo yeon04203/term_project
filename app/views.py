@@ -185,7 +185,10 @@ def pronounce(request):
 
 
 def user_profile(request):
-    context = {}
+    user = request.user
+    rank = Profile.objects.all().order_by('-user_test_point')
+
+    context = {"rank": rank}
     if request.method == "POST":
         current_password = request.POST.get("origin_password")
         user = request.user
