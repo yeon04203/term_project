@@ -5,8 +5,11 @@ from .models import Today
 from .models import Profile
 from django.core.paginator import Paginator
 from django.db.models import Q
-from django.contrib.auth.forms import PasswordChangeForm
+from django.shortcuts import render
+import json
+from django.views.decorators.csrf import csrf_exempt
 
+from chatterbot import ChatBot
 try:
     from django.utills import simplejson as json
 except ImportError:
@@ -20,6 +23,43 @@ def index(request):
     return render(request, 'index.html', context)
 
 
+#----------------------------------
+# 챗봇
+chatbot = ChatBot(
+    'Ron Obvious',
+    trainer='chatterbot.trainers.ChatterBotCorpusTrainer'
+)
+
+# Train based on the english corpus
+
+#Already trained and it's supposed to be persistent
+#chatbot.train("chatterbot.corpus.english")
+
+@csrf_exempt
+def get_response(request):
+	response = {'status': None}
+
+	if request.method == 'POST':
+		data = json.loads(request.body.decode('utf-8'))
+		message = data['message']
+
+		chat_response = chatbot.get_response(message).text
+		response['message'] = {'text': chat_response, 'user': False, 'chat_bot': True}
+		response['status'] = 'ok'
+
+	else:
+		response['error'] = 'no post data found'
+
+	return HttpResponse(
+		json.dumps(response),
+			content_type="application/json"
+		)
+
+
+def chatbot(request, template_name="chatbot.html"):
+	context = {'title': 'Chatbot Version 1.0'}
+	return render(None, template_name, context)
+# --------------------------------------------------------
 def voca(request):
     vocas = Voca.objects.all()
     paginator = Paginator(vocas, 10)
@@ -63,8 +103,12 @@ def test_result(request):
 
     if test_mean == test_word:
         flag = "정답"
+<<<<<<< HEAD
         user_test_point += 1
         # Profile.objects.values('user_test_point').update(user_test_point)
+=======
+        # Profile.objects.values('user_test_point').update(user_test_point + 1)
+>>>>>>> 030d70c814ac3e7621f4b263cceb45715efea3b9
         context = {"flag": flag}
 
         return render(request, 'test_result.html', context)
@@ -119,10 +163,7 @@ def voca_ma(request):
     context = {"vocas": vocas}
     return render(request, 'voca_ma.html', context)
 
-
 #----------------------------------
-
-
 def listen(request):
 
     return render(request, 'listen.html')
@@ -139,18 +180,7 @@ def pronounce(request):
 
 
 def user_profile(request):
-    if request.method == 'POST':
-        form = PasswordChangeForm(request.user, request.POST)
-        if form.is_valid():
-            user = form.save()
-            update_session_auth_hash(request, user)  # Important!
-            messages.success(request,
-                             'Your password was successfully updated!')
-            return redirect('index')
-        else:
-            messages.error(request, 'Please correct the error below.')
-    else:
-        form = PasswordChangeForm(request.user)
-    return render(request, 'user_profile.html', {'form': form})
 
     return render(request, 'user_profile.html')
+
+
