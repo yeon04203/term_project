@@ -4,11 +4,12 @@
 <div style="float: right;">
     {%if user.is_authenticated%}
     <div style="font-size: 1.1rem;">
-        {{user.username}}님ㅤ
+        {{user.profile.nickname}}님ㅤ
         <form action="{%url 'logout'%}" method="POST" style="float: right; font-size: 1.1rem;">
             {%csrf_token%}
-            <input type="submit" value="로그아웃" style="font-size: 1.1rem;">
+            <input type="submit" value="로그아웃" style="font-size: 1.0rem;">
         </form>
+        <a href="{%url 'user_profile'%}">내정보 </a>
     </div>
     {%else%}
     <a href="{%url 'signup'%}">회원가입</a>

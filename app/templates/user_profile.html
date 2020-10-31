@@ -1,0 +1,9 @@
+<center>
+    {%if user.is_authenticated%}
+    <div>{{user.profile.nickname}}님의 정보</div>
+    <div>
+        단어테스트 점수는
+        {{user.profile.user_test_point}}점입니다.
+    </div>
+    {%endif%}
+</center>

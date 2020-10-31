@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 from .models import Voca
-from .models import Blog
 from .models import Today
+from .models import Profile
 from django.core.paginator import Paginator
 from django.db.models import Q
 try:
@@ -54,17 +54,21 @@ def voca_test(request):
 
 
 def test_result(request):
+    user_test_point = Profile.objects.values('user_test_point')
     test_word = request.GET['test_word']
     test_mean = request.GET['mean']
     flag = "플래그"
 
     if test_mean == test_word:
         flag = "정답"
+        # Profile.objects.values('user_test_point').update(user_test_point + 1)
         context = {"flag": flag}
+
         return render(request, 'test_result.html', context)
     else:
         flag = "오답"
         context = {"flag": flag}
+        context['mean'] = test_mean
         return render(request, 'test_result.html', context)
 
 
@@ -129,3 +133,8 @@ def write(request):
 def pronounce(request):
 
     return render(request, 'pronounce.html')
+
+
+def user_profile(request):
+
+    return render(request, 'user_profile.html')

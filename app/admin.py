@@ -1,7 +1,6 @@
 from django.contrib import admin
 from import_export.admin import ImportExportModelAdmin
-from .models import Voca
-from .models import Today
+from .models import Voca, Today, Profile
 
 
 @admin.register(Voca)
@@ -12,3 +11,6 @@ class VocaAdmin(ImportExportModelAdmin):
 @admin.register(Today)
 class TodayAdmin(ImportExportModelAdmin):
     pass
+
+
+admin.site.register(Profile)

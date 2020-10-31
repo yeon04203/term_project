@@ -1,7 +1,9 @@
 <h1>결과</h1>
 
 {{flag}}
-
+{%if mean%}
+<h3>정답: {{mean}}</h3>
+{%endif%}
 <form action="{%url 'voca_test'%}">
     <button>다음 단어로</button>
 </form>
