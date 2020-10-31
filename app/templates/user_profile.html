@@ -1,9 +1,42 @@
+<div style="float: right;">
+    <form action="{%url 'index'%}">
+        <button>홈으로 돌아가기</button>
+    </form>
+</div>
 <center>
     {%if user.is_authenticated%}
-    <div>{{user.profile.nickname}}님의 정보</div>
+    <h2>
+        <div>{{user.profile.nickname}}님의 정보</div>
+    </h2>
     <div>
-        단어테스트 점수는
+        현재 포인트는
         {{user.profile.user_test_point}}점입니다.
     </div>
+    <div>아이디 : {{user.username}}</div>
+    <div class="login_container">
+        <h4>비밀번호 변경</h4>
+        <form method="POST" action="{% url 'user_profile' %}" class="login_form">
+            {% csrf_token %}
+
+            <div class="login_input_container">
+                <div class="username_form_text">현재 비밀번호</div>
+                <div class="input_container">
+                    <input class="login_input" name="origin_password" type="password">
+                </div>
+
+                <div class="password_form_text">새로운 비밀번호</div>
+                <div class="input_container">
+                    <input class="login_input" name="password1" type="password">
+                </div>
+                <div class="confirm_password_form_text">비밀번호 확인</div>
+                <div class="input_container">
+                    <input class="login_input" name="password2" type="password">
+                </div>
+            </div>
+            <div class="login_btn_container">
+                <input type="submit" class="login_btn" value="Submit">
+            </div>
+    </div>
+    </form>
     {%endif%}
 </center>

@@ -7,6 +7,8 @@ from django.core.paginator import Paginator
 from django.db.models import Q
 from django.shortcuts import render
 from django.db.models import F
+from django.contrib.auth.hashers import check_password
+from django.contrib import auth
 
 import json
 from django.views.decorators.csrf import csrf_exempt
@@ -183,5 +185,21 @@ def pronounce(request):
 
 
 def user_profile(request):
+    context = {}
+    if request.method == "POST":
+        current_password = request.POST.get("origin_password")
+        user = request.user
+        if check_password(current_password, user.password):
+            new_password = request.POST.get("password1")
+            password_confirm = request.POST.get("password2")
+            if new_password == password_confirm:
+                user.set_password(new_password)
+                user.save()
+                auth.login(request, user)
+                return render(request, 'index.html')
+            else:
+                context.update({'error': "새로운 비밀번호를 다시 확인해주세요."})
+    else:
+        context.update({'error': "현재 비밀번호가 일치하지 않습니다."})
 
-    return render(request, 'user_profile.html')
+    return render(request, "user_profile.html", context)
