@@ -63,7 +63,8 @@ def test_result(request):
 
     if test_mean == test_word:
         flag = "정답"
-        Profile.objects.values('user_test_point').update(user_test_point)
+        user_test_point += 1
+        # Profile.objects.values('user_test_point').update(user_test_point)
         context = {"flag": flag}
 
         return render(request, 'test_result.html', context)
