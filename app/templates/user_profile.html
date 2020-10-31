@@ -1,10 +1,9 @@
 <center>
     {%if user.is_authenticated%}
-    <h2>내 정보</h2>
-    <div>아이디 : {{user.username}}</div>
-    <div>닉네임 : {{user.profile.nickname}}</div>
+    <div>{{user.profile.nickname}}님의 정보</div>
     <div>
-        나의 현재 포인트는 {{user.profile.user_test_point}}점입니다.
+        단어테스트 점수는
+        {{user.profile.user_test_point}}점입니다.
     </div>
     {%endif%}
 </center>

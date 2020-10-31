@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path
 import app.views
 import accounts.views
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -37,4 +39,9 @@ urlpatterns = [
     path('pronounce/', app.views.pronounce, name='pronounce'),
     path('voca_cate/', app.views.voca_cate, name='voca_cate'),
     path('user_profile/', app.views.user_profile, name='user_profile'),
+    path('chatbot/',app.views.chatbot, name='chatbot'),
+    path('get-response/', app.views.get_response, name='get_response'),
 ]
+
+if settings.DEBUG == True:
+	urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
