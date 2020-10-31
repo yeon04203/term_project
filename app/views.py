@@ -5,6 +5,8 @@ from .models import Today
 from .models import Profile
 from django.core.paginator import Paginator
 from django.db.models import Q
+from django.contrib.auth.forms import PasswordChangeForm
+
 try:
     from django.utills import simplejson as json
 except ImportError:
@@ -61,7 +63,7 @@ def test_result(request):
 
     if test_mean == test_word:
         flag = "정답"
-        # Profile.objects.values('user_test_point').update(user_test_point + 1)
+        Profile.objects.values('user_test_point').update(user_test_point)
         context = {"flag": flag}
 
         return render(request, 'test_result.html', context)
@@ -136,5 +138,18 @@ def pronounce(request):
 
 
 def user_profile(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)  # Important!
+            messages.success(request,
+                             'Your password was successfully updated!')
+            return redirect('index')
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, 'user_profile.html', {'form': form})
 
     return render(request, 'user_profile.html')
