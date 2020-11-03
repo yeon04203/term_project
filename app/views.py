@@ -211,6 +211,9 @@ def user_profile(request):
 def ranking(request):
     user = request.user
     rank = Profile.objects.all().order_by('-user_test_point')
-    context = {"rank": rank}
+    profile_obj = Profile.objects.get(user=user)
+    nickname = profile_obj.nickname
+
+    context = {"rank": rank, "nickname": nickname}
 
     return render(request, "ranking.html", context)
