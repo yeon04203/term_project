@@ -1,6 +1,11 @@
 <h3>현재 포인트 순위 현황</h3>
 {%for r in rank%}
-{{forloop.counter}}위 {{r.nickname}}
+{{forloop.counter}}위
+{% if r.nickname == nickname %}
+<div><span style="background-color:#00FF00">{{r.nickname}}</span></div>
+{%else%}
+<div>{{r.nickname}}</div>
+{%endif%}
 <hr>
 {%endfor%}
 </div>
