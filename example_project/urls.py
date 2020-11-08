@@ -35,7 +35,7 @@ urlpatterns = [
     path('voca_ma/', app.views.voca_ma, name='voca_ma'),
     path('voca_test/', app.views.voca_test, name='voca_test'),
     path('test_result/', app.views.test_result, name='test_result'),
-    path('listen/', app.views.listen, name='listen'),
+    path('listen/',  include('video.urls')),
     path('write/', app.views.write, name='write'),
     path('pronounce/', app.views.pronounce, name='pronounce'),
     path('voca_cate/', app.views.voca_cate, name='voca_cate'),
