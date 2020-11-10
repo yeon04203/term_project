@@ -217,3 +217,7 @@ def ranking(request):
     context = {"rank": rank, "nickname": nickname}
 
     return render(request, "ranking.html", context)
+
+def de(request):
+
+    return render(request, 'de.html')

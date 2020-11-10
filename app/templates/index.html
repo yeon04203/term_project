@@ -33,14 +33,6 @@
     <br>
 </center>
 {%if user.is_authenticated%}
-<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-    <a href="{%url 'voca_cate'%}">단어장</a>
-    <a href="{%url 'voca_test'%}">단어 테스트</a>
-    <a href="{%url 'listen'%}">영어듣기</a>
-    <a href="{%url 'write'%}">손글씨 쓰기</a>
-    <a href="{%url 'pronounce'%}">발음 연습</a>
-    <a href="{%url 'chatbot'%}">챗봇</a>
-</nav>
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item active" aria-current="page"><a href="{%url 'voca_cate'%}">단어장</a>
@@ -49,6 +41,7 @@
         <li class="breadcrumb-item active" aria-current="page"><a href="{%url 'write'%}">손글씨 쓰기</a>
         <li class="breadcrumb-item active" aria-current="page"><a href="{%url 'pronounce'%}">발음 연습</a>
         <li class="breadcrumb-item active" aria-current="page"><a href="{%url 'chatbot'%}">챗봇</a>
+        <li class="breadcrumb-item active" aria-current="page"><a href="{%url 'de'%}">챗봇</a>
         </li>
     </ol>
     {%else%}
