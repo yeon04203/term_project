@@ -59,11 +59,15 @@ if (navigator.mediaDevices.getUserMedia) {
       const clipLabel = document.createElement('p');
       const audio = document.createElement('audio');
       const deleteButton = document.createElement('button');
+      const evaluateButton = document.createElement('button');
+      const evaluateResult = document.createElement('p');
 
       clipContainer.classList.add('clip');
       audio.setAttribute('controls', '');
       deleteButton.textContent = 'Delete';
       deleteButton.className = 'delete';
+      evaluateButton.textContent = 'Evaluate';
+      evaluateButton.className = 'evaluate';
 
       if(clipName === null) {
         clipLabel.textContent = 'My unnamed clip';
@@ -74,6 +78,7 @@ if (navigator.mediaDevices.getUserMedia) {
       clipContainer.appendChild(audio);
       clipContainer.appendChild(clipLabel);
       clipContainer.appendChild(deleteButton);
+      clipContainer.appendChild(evaluateButton);
       soundClips.appendChild(clipContainer);
 
       audio.controls = true;
@@ -86,6 +91,39 @@ if (navigator.mediaDevices.getUserMedia) {
       deleteButton.onclick = function(e) {
         let evtTgt = e.target;
         evtTgt.parentNode.parentNode.removeChild(evtTgt.parentNode);
+      }
+
+      evaluateButton.onclick = function(e) {
+        /*var fs = require('fs');
+        var openApiURL = 'http://aiopen.etri.re.kr:8000/WiseASR/Pronunciation';
+        var accessKey = 'ada89ba0-ef6c-4136-8be7-7ea765c4f7ce';
+        var languageCode = 'english';
+        var script = 'PRONUNCIATION_SCRIPT';
+        var audioFilePath = audioURL;
+        var audioData;
+
+        var audioData = fs.readFileSync(audioFilePath);
+
+        var requestJson = {
+          'access_key': access_key,
+          'argument': {
+            'language_code': languageCode,
+            'script': script,
+            'audio': audioData.toString('base64')
+          }
+        };
+
+        var request = require('request');
+        var options = {
+          url: openApiURL,
+          body: JSON.stringify(requestJson),
+          headers: {'Content-Type':'application/json; charset=UTF-8'}
+        };
+        request.post(options, function (error, response, body) {
+          console.log('responseCode = ' + response.statusCode);
+          console.log('responseBody = ' + body);
+        });*/
+        
       }
 
       clipLabel.onclick = function() {
