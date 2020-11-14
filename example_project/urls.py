@@ -17,7 +17,9 @@ from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views
 import app.views
+from chatbot.views import home, get_response
 import accounts.views
+
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -35,16 +37,16 @@ urlpatterns = [
     path('voca_ma/', app.views.voca_ma, name='voca_ma'),
     path('voca_test/', app.views.voca_test, name='voca_test'),
     path('test_result/', app.views.test_result, name='test_result'),
-    path('listen/',  include('video.urls')),
+    path('listen/', include('video.urls')),
     path('write/', app.views.write, name='write'),
     path('pronounce/', app.views.pronounce, name='pronounce'),
     path('voca_cate/', app.views.voca_cate, name='voca_cate'),
     path('user_profile/', app.views.user_profile, name='user_profile'),
-    path('chatbot/', app.views.chatbot, name='chatbot'),
-    path('get-response/', app.views.get_response, name='get_response'),
     path('ranking/', app.views.ranking, name='ranking'),
-]
+    path('de/', app.views.de, name='de'),
+    path('chatbot/', home,  name='chatbot'),
+    path('get-response/', get_response),
 
+]
 if settings.DEBUG == True:
-    urlpatterns += static(settings.MEDIA_URL,
-                          document_root=settings.MEDIA_ROOT)
+	urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
