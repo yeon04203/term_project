@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'import_export',
     'video',
     'chatbot',
+    'todo',
+    'bulma'
+
 ]
 
 MIDDLEWARE = [
