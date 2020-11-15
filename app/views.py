@@ -188,4 +188,7 @@ def de(request):
 
 
 def a(request):
-    return render(request, 'a.html')
+    todays = Today.objects.order_by('?')[0]
+
+    context = {"todays": todays}
+    return render(request, 'a.html', context)
