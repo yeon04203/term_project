@@ -1,14 +1,72 @@
-<h1>단어 테스트</h1>
-<div style="float: right;">
-    <form action="{%url 'index'%}">
-        <button>홈으로 돌아가기</button>
-    </form>
-</div>
+<!DOCTYPE HTML>
+<!--
+	Theory by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>Generic - Theory by TEMPLATED</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="../static/css/main.css" />
+	</head>
+	<body class="subpage">
 
-{{vocas_test.word}}
+		<!-- Header -->
+			<header id="header">
+				<div class="inner">
+					<a href="index.html" class="logo">Theory</a>
+					<nav id="nav">
+						<a href="index.html">Home</a>
+						<a href="generic.html">Generic</a>
+						<a href="elements.html">Elements</a>
+					</nav>
+					<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+				</div>
+			</header>
 
-<form action="{%url 'test_result'%}" method="get">
-    <input type="hidden" value="{{vocas_test.mean}}" name="mean"></input>
-    <input type=" text" name="test_word">
-    <input type="submit" value="정답제출">
-</form>
+		<!-- Three -->
+			<section id="three" class="wrapper">
+				<div class="inner">
+					<header class="align-center">
+						<h2>단어 테스트</h2>
+						<p>마 단어 공부했나?? 테스트 함 볼겨?????</p>
+					</header>
+                    <center>
+                    {{vocas_test.word}}
+                    <form action="{%url 'test_result'%}" method="get" >
+                        <input type="hidden" value="{{vocas_test.mean}}" name="mean"></input>
+                        <input type=" text" name="test_word">
+                        <input type="submit" value="정답제출">
+                    </form>
+                </center>
+				</div>
+			</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="inner">
+					<div class="flex">
+						<div class="copyright">
+							&copy; Untitled. Design: <a href="https://templated.co">TEMPLATED</a>. Images: <a href="https://unsplash.com">Unsplash</a>.
+						</div>
+						<ul class="icons">
+							<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon fa-linkedin"><span class="label">linkedIn</span></a></li>
+							<li><a href="#" class="icon fa-pinterest-p"><span class="label">Pinterest</span></a></li>
+							<li><a href="#" class="icon fa-vimeo"><span class="label">Vimeo</span></a></li>
+						</ul>
+					</div>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="../static/js/jquery.min.js"></script>
+			<script src="../static/js/skel.min.js"></script>
+			<script src="../static/js/util.js"></script>
+			<script src="../static/js/main.js"></script>
+
+	</body>
+</html>
