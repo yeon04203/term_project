@@ -1,0 +1,48 @@
+{% extends 'todo_base.html' %}
+
+{% block title %}할일 목록{% endblock %}
+
+{% block content %}
+<div class="box has-text-centered">
+    <a href="{% url 'todo:todolist_create' %}">
+  <button class="button is-info is-rounded is-fullwidth">할일 추가하기</button>
+  </a>
+  </div>
+
+<div class="rows">
+{% for todo in to_do_list %}
+
+<div class="card row">
+    <header class="card-header">
+      <p class="card-header-title">
+        할일 : {{ todo.name }}
+      </p>
+      <a href="#" class="card-header-icon" aria-label="more options">
+        <span class="icon">
+          <i class="fas fa-angle-down" aria-hidden="true"></i>
+        </span>
+      </a>
+    </header>
+    <div class="card-content">
+      <div class="content">
+        해야 할일 : {{ todo.description|truncatechars:30 }}
+        <br>
+        <hr>
+        생성 날짜 : {{ todo.date_created }}
+        <br>
+        데드 라인 : {{ todo.date_deadline }}
+        <hr>
+        남은 일수 : {{ todo.remaining_days }}
+      </div>
+    </div>
+    <footer class="card-footer">
+        <a href="{% url 'todo:todolist_detail' todo.id %}" class="card-footer-item"><button class="button is-primary is-fullwidth">더보기</button></a>
+        <a href="{% url 'todo:todolist_update' todo.id %}" class="card-footer-item"><button class="button is-warning is-fullwidth">수정하기</button></a>
+        <a href="{% url 'todo:todolist_delete' todo.id %}" class="card-footer-item"><button class="button is-danger is-fullwidth">삭제하기</button></a>
+      </footer>
+  </div>
+
+{% endfor %}
+
+</div>
+{% endblock content %}
