@@ -2927,7 +2927,7 @@
 
 	#banner {
 		padding: 12em 0 10em 0;
-		background-image: url("{% static 'img/muffing.jpg' %}");
+		background-image: url('choco.jpg');
 		background-size: cover;
 		background-position: top;
 		background-attachment: fixed;

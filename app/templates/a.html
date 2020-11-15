@@ -1,6 +1,32 @@
 {% load static %}
 <html>
 
+<style>
+    @font-face {
+        font-family: 'ghanachoco';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ghanachoco.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Handon3gyeopsal600g';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.2/Handon3gyeopsal600g.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    .ghanachoco-font {
+        font-family: 'ghanachoco', sans-serif;
+        color: black;
+    }
+
+    .Handon3gyeopsal600g-font {
+        font-family: 'Handon3gyeopsal600g', sans-serif;
+        color: black;
+    }
+</style>
+
 <head>
     <title>Theory by TEMPLATED</title>
     <meta charset="utf-8" />
@@ -34,8 +60,8 @@
 
     <!-- Banner -->
     <section id="banner">
-        <h1>Welcome to Theory</h1>
-        <p>A free responsive HTML5 website template by TEMPLATED.</p>
+        <h1 class="ghanachoco-font">머핀의 법칙</h1>
+        <p class="Handon3gyeopsal600g-font">AI 기반 영어 교육 웹페이지</p>
     </section>
 
     <!-- One -->
@@ -44,33 +70,9 @@
             <div class="flex flex-3">
                 <article>
                     <header>
-                        <h3>Magna tempus sed amet<br /> aliquam veroeros</h3>
+                        <h3 style="font-weight: bold;">오늘의 표현</h3>
                     </header>
-                    <p>Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet,
-                        lectus arcu.</p>
-                    <footer>
-                        <a href="#" class="button special">More</a>
-                    </footer>
-                </article>
-                <article>
-                    <header>
-                        <h3>Interdum lorem pulvinar<br /> adipiscing vitae</h3>
-                    </header>
-                    <p>Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet,
-                        lectus arcu.</p>
-                    <footer>
-                        <a href="#" class="button special">More</a>
-                    </footer>
-                </article>
-                <article>
-                    <header>
-                        <h3>Libero purus magna sapien<br /> sed ullamcorper</h3>
-                    </header>
-                    <p>Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet,
-                        lectus arcu.</p>
-                    <footer>
-                        <a href="#" class="button special">More</a>
-                    </footer>
+                    <p style="font-size: 1.2rem;">{{todays.today_word}} {{todays.today_mean}}</p>
                 </article>
             </div>
         </div>
