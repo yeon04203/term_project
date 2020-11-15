@@ -42,8 +42,7 @@ INSTALLED_APPS = [
     'video',
     'chatbot',
     'todo',
-    'bulma'
-
+    'bulma',
 ]
 
 MIDDLEWARE = [
