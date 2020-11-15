@@ -1918,7 +1918,7 @@
 			}
 
 		.flex.flex-4 .box {
-			width: 21%;
+			width: 18%;
 		}
 
 		@media screen and (max-width: 980px) {
@@ -2933,7 +2933,7 @@
 		background-attachment: fixed;
 		background-repeat: no-repeat;
 		text-align: center;
-		border-top: 0.5em solid #5385c1;
+		/* border-top: 8em solid #5385c1; */
 	}
 
 		#banner h1 {

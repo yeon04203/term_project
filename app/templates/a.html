@@ -48,77 +48,89 @@
     <!-- Header -->
     <header id="header">
         <div class="inner">
-            <a href="index.html" class="logo">Theory</a>
-            <nav id="nav">
-                <a href="index.html">Home</a>
-                <a href="generic.html">Generic</a>
-                <a href="elements.html">Elements</a>
+            <nav id="nav" style="color: white; font-size: 1rem;">
+                <a href="{%url 'a'%}">Home</a>
+                <a href="{%url 'voca_cate'%}">단어장</a>
+                <a href="{%url 'voca_test'%}">단어테스트</a>
+                <a href="{%url 'listen'%}">영어듣기</a>
+                <a href="{%url 'write'%}">손글씨 쓰기</a>
+                <a href="{%url 'pronounce'%}">발음 연습</a>
+                <a href="{%url 'chatbot'%}">챗봇</a>
             </nav>
-            <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+            <!-- <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a> -->
         </div>
     </header>
 
     <!-- Banner -->
     <section id="banner">
-        <h1 class="ghanachoco-font">머핀의 법칙</h1>
-        <p class="Handon3gyeopsal600g-font">AI 기반 영어 교육 웹페이지</p>
+        <h1 style="font-size: 4.5rem;" class="ghanachoco-font">머핀의 법칙</h1>
+        <p class="Handon3gyeopsal600g-font" style="font-size: 1rem;">AI 기반 영어 교육 웹페이지</p>
     </section>
 
     <!-- One -->
     <section id="one" class="wrapper">
-        <div class="inner">
-            <div class="flex flex-3">
-                <article>
+        <div class="inner Handon3gyeopsal600g-font">
+            <!-- <div class="flex flex-3"> -->
+            <article>
+                <center>
                     <header>
-                        <h3 style="font-weight: bold;">오늘의 표현</h3>
+                        <h1 style="font-weight: bold; font-size: 1.5rem;">오늘의 표현</h1>
                     </header>
-                    <p style="font-size: 1.2rem;">{{todays.today_word}} {{todays.today_mean}}</p>
-                </article>
-            </div>
+                    <p style="font-size: 1.3rem;">{{todays.today_word}} {{todays.today_mean}}</p>
+                </center>
+            </article>
+            <!-- </div> -->
         </div>
     </section>
 
     <!-- Two -->
     <section id="two" class="wrapper style1 special">
-        <div class="inner">
+        <div class="inner Handon3gyeopsal600g-font">
             <header>
-                <h2>Ipsum Feugiat</h2>
+                <h2>팀원소개</h2>
                 <p>Semper suscipit posuere apede</p>
             </header>
             <div class="flex flex-4">
                 <div class="box person">
                     <div class="image round">
-                        <img src="images/pic03.jpg" alt="Person 1" />
+                        <img src="{% static 'img/face1.jpg' %}" alt="Person 1" />
                     </div>
-                    <h3>Magna</h3>
-                    <p>Cipdum dolor</p>
+                    <h3>조은지</h3>
+                    <p>21611771 <br>조장</p>
                 </div>
                 <div class="box person">
                     <div class="image round">
-                        <img src="images/pic04.jpg" alt="Person 2" />
+                        <img src="" alt="Person 2" />
                     </div>
-                    <h3>Ipsum</h3>
-                    <p>Vestibulum comm</p>
+                    <h3>전상현</h3>
+                    <p>21411895 <br>조원</p>
                 </div>
                 <div class="box person">
                     <div class="image round">
-                        <img src="images/pic05.jpg" alt="Person 3" />
+                        <img src="{% static 'img/4.jpg' %}" alt="Person 3" />
                     </div>
-                    <h3>Tempus</h3>
-                    <p>Fusce pellentes</p>
+                    <h3>박수민</h3>
+                    <p>21611730 <br>조원</p>
                 </div>
                 <div class="box person">
                     <div class="image round">
-                        <img src="images/pic06.jpg" alt="Person 4" />
+                        <img src="{% static 'img/2.jpg' %}" alt="Person 4" />
                     </div>
-                    <h3>Dolore</h3>
-                    <p>Praesent placer</p>
+                    <h3>정승연</h3>
+                    <p>21611768 <br>조원</p>
+                </div>
+                <div class="box person">
+                    <div class="image round">
+                        <img src="{% static 'img/3.png' %}" alt="Person 5" />
+                    </div>
+                    <h3>최아현</h3>
+                    <p>21611778 <br>조원</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Three -->
+    <!-- Three
     <section id="three" class="wrapper special">
         <div class="inner">
             <header class="align-center">
@@ -154,7 +166,7 @@
                 </article>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Footer -->
     <footer id="footer">
@@ -165,11 +177,8 @@
                         href="https://unsplash.com">Unsplash</a>.
                 </div>
                 <ul class="icons">
-                    <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-                    <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-                    <li><a href="#" class="icon fa-linkedin"><span class="label">linkedIn</span></a></li>
-                    <li><a href="#" class="icon fa-pinterest-p"><span class="label">Pinterest</span></a></li>
-                    <li><a href="#" class="icon fa-vimeo"><span class="label">Vimeo</span></a></li>
+                    <li> <a href="http://cse.yu.ac.kr/main.php"><img src="{% static 'img/yu.png' %}" width="200px;"></a>
+                    </li>
                 </ul>
             </div>
         </div>
