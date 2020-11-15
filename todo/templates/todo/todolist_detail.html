@@ -1,0 +1,42 @@
+{% extends 'todo_base.html' %}
+
+{% block title %}할일 정보{% endblock %}
+
+{% block content %}
+
+<div class="rows">
+
+    
+    <div class="card row">
+        <header class="card-header">
+          <p class="card-header-title">
+            할일 : {{ todolist.name }}
+          </p>
+          <a href="#" class="card-header-icon" aria-label="more options">
+            <span class="icon">
+              <i class="fas fa-angle-down" aria-hidden="true"></i>
+            </span>
+          </a>
+        </header>
+        <div class="card-content">
+          <div class="content">
+            해야 할일 : {{ todolist.description }}
+            <br>
+            <hr>
+            생성 날짜 : {{ todolist.date_created }}
+            <br>
+            데드 라인 : {{ todolist.date_deadline }}
+            <hr>
+            남은 일수 : {{ todolist.remaining_days }}
+            
+            
+          </div>
+        </div>
+        <footer class="card-footer">
+            <a href="{% url 'todo:todolist' %}" class="card-footer-item"><button class="button is-link is-fullwidth">뒤로가기</button></a>
+            <a href="{% url 'todo:todolist_update' todolist.pk %}" class="card-footer-item"><button class="button is-warning is-fullwidth">수정하기</button></a>
+            <a href="{% url 'todo:todolist_delete' todolist.pk %}" class="card-footer-item"><button class="button is-danger is-fullwidth">삭제하기</button></a>
+          </footer>
+      </div>
+    
+{% endblock content %}
