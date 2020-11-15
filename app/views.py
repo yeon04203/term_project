@@ -26,6 +26,7 @@ def index(request):
     context = {"todays": todays}
     return render(request, 'index.html', context)
 
+
 def voca(request):
     vocas = Voca.objects.all()
     paginator = Paginator(vocas, 10)
@@ -178,6 +179,13 @@ def ranking(request):
 
     return render(request, "ranking.html", context)
 
-def de(request):
 
-    return render(request, 'de.html')
+def de(request):
+    todays = Today.objects.order_by('?')[0]
+
+    context = {"todays": todays}
+    return render(request, 'de.html', context)
+
+
+def a(request):
+    return render(request, 'a.html')

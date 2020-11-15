@@ -44,9 +44,10 @@ urlpatterns = [
     path('user_profile/', app.views.user_profile, name='user_profile'),
     path('ranking/', app.views.ranking, name='ranking'),
     path('de/', app.views.de, name='de'),
-    path('chatbot/', home,  name='chatbot'),
+    path('a/', app.views.a, name='a'),
+    path('chatbot/', home, name='chatbot'),
     path('get-response/', get_response),
-
 ]
 if settings.DEBUG == True:
-	urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
