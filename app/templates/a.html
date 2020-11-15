@@ -44,22 +44,76 @@
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="position: fixed; top: 0;">
 
-    <!-- Header -->
-    <header id="header">
-        <div class="inner">
-            <nav id="nav" style="color: white; font-size: 1rem;">
+
+        <ul class="navbar-nav">
+            <li class="nav-item active">
                 <a href="{%url 'a'%}">Home</a>
+            </li>
+            <li class="nav-item">
                 <a href="{%url 'voca_cate'%}">단어장</a>
+            </li>
+            <li class="nav-item">
                 <a href="{%url 'voca_test'%}">단어테스트</a>
+
+            </li>
+            <li class="nav-item">
                 <a href="{%url 'listen'%}">영어듣기</a>
-                <a href="{%url 'write'%}">손글씨 쓰기</a>
+
+            </li>
+            <li class="nav-item">
                 <a href="{%url 'pronounce'%}">발음 연습</a>
+
+            </li>
+            <li class="nav-item">
+                <a href="{%url 'write'%}">손글씨 쓰기</a>
+
+            </li>
+            <li class="nav-item">
                 <a href="{%url 'chatbot'%}">챗봇</a>
-            </nav>
-            <!-- <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a> -->
-        </div>
-    </header>
+
+            </li>
+            <li class="nav-item">
+                <a href="{%url 'todo:todolist'%}">투두리스트</a>
+            </li>
+            <li class="nav-item">
+                <form>
+                    {%if user.is_authenticated%}
+                    <span style="color: whitesmoke;">{{user.profile.nickname}}님</span>ㅤ
+                    <a href="{%url 'user_profile'%}">내정보 </a>
+                    <a href="{%url 'ranking'%}">ㅤ현재 순위ㅤ</a>
+                    <form action="{%url 'logout'%}" method="POST" style="float: right;">
+                        {%csrf_token%}
+                        <input type="submit" value="로그아웃" style="font-size: 0.6rem;">
+                    </form>
+                    {%else%}
+                    <a href="{%url 'signup'%}">회원가입</a>
+                    <a href="{%url 'login'%}">로그인</a>
+                    {%endif%}
+                    <!-- <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+                </form>
+            </li>
+        </ul>
+
+    </nav>
+    <form class="form-inline mt-2 mt-md-0">
+        {%if user.is_authenticated%}
+        <span style="color: whitesmoke;">{{user.profile.nickname}}님</span>ㅤ
+        <a href="{%url 'user_profile'%}">내정보 </a>
+        <a href="{%url 'ranking'%}">ㅤ현재 순위ㅤ</a>
+        <form action="{%url 'logout'%}" method="POST" style="float: right;">
+            {%csrf_token%}
+            <input type="submit" value="로그아웃">
+        </form>
+        {%else%}
+        <a class="btn btn-sm btn-outline-secondary" href="{%url 'signup'%}">회원가입</a>
+        <a class="btn btn-sm btn-outline-secondary" href="{%url 'login'%}">로그인</a>
+        {%endif%}
+        <!-- <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+    </form>
 
     <!-- Banner -->
     <section id="banner">
@@ -88,7 +142,7 @@
         <div class="inner Handon3gyeopsal600g-font">
             <header>
                 <h2>팀원소개</h2>
-                <p>Semper suscipit posuere apede</p>
+                <p></p>
             </header>
             <div class="flex flex-4">
                 <div class="box person">
